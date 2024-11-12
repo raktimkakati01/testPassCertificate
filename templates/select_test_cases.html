@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Test Cases</title>
+</head>
+<body>
+    <h1>Select Test Cases</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for category, test_cases in test_cases_dict.items() %}
+            <h3>Test Cases for {{ category }}:</h3>
+            {% for test_case in test_cases %}
+                <label>
+                    <input type="checkbox" name="test_cases_{{ category }}" value="{{ test_case }}">
+                    {{ test_case }}
+                </label><br>
+            {% endfor %}
+            <br>
+        {% endfor %}
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>

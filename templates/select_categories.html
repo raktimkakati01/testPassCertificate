@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Categories, Tester, Browsers, and Environment</title>
+</head>
+<body>
+    <h1>Select Categories</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div>
+            <p><strong>Tester Name:</strong></p>
+            {% for tester in form.tester_name.choices %}
+                <label>
+                    <input type="radio" name="tester_name" value="{{ tester[0] }}">
+                    {{ tester[1] }}
+                </label><br>
+            {% endfor %}
+        </div>
+
+        <div>
+            <p><strong>Browsers:</strong></p>
+            {% for browser in form.browsers.choices %}
+                <label>
+                    <input type="checkbox" name="browsers" value="{{ browser[0] }}">
+                    {{ browser[1] }}
+                </label><br>
+            {% endfor %}
+        </div>
+
+        <div>
+            <p><strong>Environment:</strong></p>
+            {{ form.environment() }}
+        </div>
+
+        <div>
+            <p><strong>Devices:</strong></p>
+            {% for device in form.devices.choices %}
+                <label>
+                    <input type="checkbox" name="devices" value="{{ device[0] }}">
+                    {{ device[1] }}
+                </label><br>
+            {% endfor %}
+        </div>        
+
+        <div>
+            <p><strong>Categories:</strong></p>
+            {% for category in form.categories.choices %}
+                <label>
+                    <input type="checkbox" name="categories" value="{{ category[0] }}">
+                    {{ category[1] }}
+                </label><br>
+            {% endfor %}
+        </div>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
